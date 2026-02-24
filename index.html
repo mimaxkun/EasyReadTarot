@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EasyRead Tarot — Marseille Tarot Reading</title>
+  <meta name="description" content="A clean, modern three-card tarot reading experience based on the Marseille tradition.">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- Landing / Hero -->
+  <header id="hero">
+    <div class="hero-content">
+      <h1>EasyRead Tarot</h1>
+      <p class="subtitle">A three-card reading in the Marseille tradition</p>
+      <button id="btn-start" class="btn-primary">Draw Your Cards</button>
+    </div>
+  </header>
+
+  <!-- Reading Area -->
+  <main id="reading" class="hidden">
+    <section class="spread-header">
+      <h2>Past &middot; Present &middot; Future</h2>
+      <p class="spread-instruction" id="spread-instruction">Tap each card to reveal its message</p>
+    </section>
+
+    <section class="card-spread" id="card-spread">
+      <div class="card-slot" data-position="0">
+        <span class="position-label">Past</span>
+        <div class="card" data-index="0">
+          <div class="card-inner">
+            <div class="card-back">
+              <div class="card-back-design">
+                <div class="card-back-border">
+                  <div class="card-back-pattern"></div>
+                </div>
+              </div>
+            </div>
+            <div class="card-front">
+              <div class="card-image-wrap">
+                <img class="card-image" src="" alt="">
+                <div class="card-placeholder"></div>
+              </div>
+              <div class="card-info">
+                <h3 class="card-name"></h3>
+                <span class="card-keyword"></span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card-slot" data-position="1">
+        <span class="position-label">Present</span>
+        <div class="card" data-index="1">
+          <div class="card-inner">
+            <div class="card-back">
+              <div class="card-back-design">
+                <div class="card-back-border">
+                  <div class="card-back-pattern"></div>
+                </div>
+              </div>
+            </div>
+            <div class="card-front">
+              <div class="card-image-wrap">
+                <img class="card-image" src="" alt="">
+                <div class="card-placeholder"></div>
+              </div>
+              <div class="card-info">
+                <h3 class="card-name"></h3>
+                <span class="card-keyword"></span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card-slot" data-position="2">
+        <span class="position-label">Future</span>
+        <div class="card" data-index="2">
+          <div class="card-inner">
+            <div class="card-back">
+              <div class="card-back-design">
+                <div class="card-back-border">
+                  <div class="card-back-pattern"></div>
+                </div>
+              </div>
+            </div>
+            <div class="card-front">
+              <div class="card-image-wrap">
+                <img class="card-image" src="" alt="">
+                <div class="card-placeholder"></div>
+              </div>
+              <div class="card-info">
+                <h3 class="card-name"></h3>
+                <span class="card-keyword"></span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Interpretation Panel -->
+    <section class="interpretation hidden" id="interpretation">
+      <div class="reading-cards" id="reading-cards"></div>
+      <div class="reading-summary" id="reading-summary"></div>
+    </section>
+
+    <div class="actions">
+      <button id="btn-new" class="btn-secondary hidden">New Reading</button>
+    </div>
+  </main>
+
+  <footer>
+    <p>Cards suggest, not predict &mdash; you have free will.</p>
+  </footer>
+
+  <script src="js/cards.js"></script>
+  <script src="js/spread.js"></script>
+  <script src="js/interpret.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>

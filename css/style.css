@@ -1,0 +1,469 @@
+/* ==========================================================================
+   EasyRead Tarot — Modern & Clean Stylesheet
+   ========================================================================== */
+
+/* --- Reset & Base --- */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --color-bg: #fafaf8;
+  --color-surface: #ffffff;
+  --color-text: #1a1a1a;
+  --color-text-muted: #6b6b6b;
+  --color-accent: #4a3f6b;
+  --color-accent-light: #7b6fa0;
+  --color-accent-subtle: #eee8f5;
+  --color-gold: #c9a84c;
+  --color-gold-soft: #f5ecd4;
+  --color-border: #e5e5e0;
+  --color-card-back: #2c2445;
+  --color-card-back-accent: #c9a84c;
+
+  --font-heading: 'Georgia', 'Times New Roman', serif;
+  --font-body: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+
+  --card-width: 160px;
+  --card-height: 260px;
+  --card-radius: 10px;
+
+  --transition-smooth: 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+html {
+  font-size: 16px;
+  -webkit-font-smoothing: antialiased;
+}
+
+body {
+  font-family: var(--font-body);
+  color: var(--color-text);
+  background: var(--color-bg);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.hidden {
+  display: none !important;
+}
+
+/* --- Hero / Landing --- */
+#hero {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 2rem;
+  min-height: 100vh;
+}
+
+.hero-content h1 {
+  font-family: var(--font-heading);
+  font-size: clamp(2.2rem, 5vw, 3.5rem);
+  font-weight: 400;
+  letter-spacing: 0.04em;
+  color: var(--color-accent);
+  margin-bottom: 0.5rem;
+}
+
+.hero-content .subtitle {
+  font-size: 1.05rem;
+  color: var(--color-text-muted);
+  margin-bottom: 2.5rem;
+  letter-spacing: 0.02em;
+}
+
+/* --- Buttons --- */
+.btn-primary,
+.btn-secondary {
+  font-family: var(--font-body);
+  font-size: 1rem;
+  padding: 0.85rem 2.4rem;
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: all var(--transition-smooth);
+  letter-spacing: 0.03em;
+}
+
+.btn-primary {
+  background: var(--color-accent);
+  color: #fff;
+}
+
+.btn-primary:hover {
+  background: var(--color-accent-light);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 20px rgba(74, 63, 107, 0.25);
+}
+
+.btn-secondary {
+  background: transparent;
+  color: var(--color-accent);
+  border: 1.5px solid var(--color-accent);
+}
+
+.btn-secondary:hover {
+  background: var(--color-accent-subtle);
+}
+
+/* --- Reading Area --- */
+#reading {
+  flex: 1;
+  padding: 2rem 1.5rem 3rem;
+  max-width: 900px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.spread-header {
+  text-align: center;
+  margin-bottom: 2.5rem;
+  padding-top: 1.5rem;
+}
+
+.spread-header h2 {
+  font-family: var(--font-heading);
+  font-size: 1.6rem;
+  font-weight: 400;
+  color: var(--color-accent);
+  margin-bottom: 0.5rem;
+}
+
+.spread-instruction {
+  font-size: 0.9rem;
+  color: var(--color-text-muted);
+  transition: opacity 0.3s ease;
+}
+
+/* --- Card Spread Layout --- */
+.card-spread {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  margin-bottom: 3rem;
+}
+
+.card-slot {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.position-label {
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--color-text-muted);
+  font-weight: 500;
+}
+
+/* --- Card --- */
+.card {
+  width: var(--card-width);
+  height: var(--card-height);
+  perspective: 800px;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.card:hover:not(.flipped) {
+  transform: translateY(-4px);
+}
+
+.card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.7s cubic-bezier(0.4, 0.0, 0.2, 1);
+  transform-style: preserve-3d;
+}
+
+.card.flipped .card-inner {
+  transform: rotateY(180deg);
+}
+
+.card-back,
+.card-front {
+  position: absolute;
+  inset: 0;
+  backface-visibility: hidden;
+  border-radius: var(--card-radius);
+  overflow: hidden;
+}
+
+/* Card Back Design */
+.card-back {
+  background: var(--color-card-back);
+}
+
+.card-back-design {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px;
+}
+
+.card-back-border {
+  width: 100%;
+  height: 100%;
+  border: 1.5px solid var(--color-card-back-accent);
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+}
+
+.card-back-pattern {
+  width: 100%;
+  height: 100%;
+  border-radius: 4px;
+  background:
+    repeating-linear-gradient(
+      45deg,
+      transparent,
+      transparent 8px,
+      rgba(201, 168, 76, 0.08) 8px,
+      rgba(201, 168, 76, 0.08) 9px
+    ),
+    repeating-linear-gradient(
+      -45deg,
+      transparent,
+      transparent 8px,
+      rgba(201, 168, 76, 0.08) 8px,
+      rgba(201, 168, 76, 0.08) 9px
+    );
+}
+
+/* Card Front */
+.card-front {
+  transform: rotateY(180deg);
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  display: flex;
+  flex-direction: column;
+}
+
+.card-image-wrap {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  padding: 6px 6px 0;
+  position: relative;
+}
+
+.card-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 6px;
+  display: none;
+}
+
+.card-image.loaded {
+  display: block;
+}
+
+.card-image.loaded + .card-placeholder {
+  display: none;
+}
+
+/* Placeholder when no image is available */
+.card-placeholder {
+  width: 100%;
+  height: 100%;
+  border-radius: 6px;
+  background: linear-gradient(135deg, var(--color-accent-subtle) 0%, var(--color-gold-soft) 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.card-placeholder::after {
+  content: attr(data-numeral);
+  font-family: var(--font-heading);
+  font-size: 2.4rem;
+  color: var(--color-accent-light);
+  opacity: 0.5;
+}
+
+.card-info {
+  padding: 0.5rem 0.6rem 0.6rem;
+  text-align: center;
+}
+
+.card-name {
+  font-family: var(--font-heading);
+  font-size: 0.78rem;
+  font-weight: 400;
+  color: var(--color-text);
+  line-height: 1.2;
+  margin-bottom: 0.15rem;
+}
+
+.card-keyword {
+  font-size: 0.7rem;
+  color: var(--color-accent-light);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+/* --- Interpretation Panel --- */
+.interpretation {
+  margin-top: 1rem;
+  animation: fadeUp 0.6s ease both;
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.reading-cards {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.reading-card-detail {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: 12px;
+  padding: 1.5rem;
+  animation: fadeUp 0.5s ease both;
+}
+
+.reading-card-detail:nth-child(2) { animation-delay: 0.1s; }
+.reading-card-detail:nth-child(3) { animation-delay: 0.2s; }
+
+.detail-position {
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--color-accent-light);
+  margin-bottom: 0.35rem;
+}
+
+.detail-header {
+  display: flex;
+  align-items: baseline;
+  gap: 0.6rem;
+  margin-bottom: 0.6rem;
+}
+
+.detail-name {
+  font-family: var(--font-heading);
+  font-size: 1.15rem;
+  color: var(--color-text);
+}
+
+.detail-keyword {
+  font-size: 0.85rem;
+  color: var(--color-gold);
+  font-weight: 500;
+}
+
+.detail-meaning {
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: var(--color-text-muted);
+}
+
+/* --- Reading Summary --- */
+.reading-summary {
+  background: var(--color-accent-subtle);
+  border-radius: 12px;
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.reading-summary h3 {
+  font-family: var(--font-heading);
+  font-size: 1.1rem;
+  font-weight: 400;
+  color: var(--color-accent);
+  margin-bottom: 0.6rem;
+}
+
+.reading-summary p {
+  font-size: 0.95rem;
+  line-height: 1.65;
+  color: var(--color-text-muted);
+}
+
+/* --- Actions --- */
+.actions {
+  text-align: center;
+  padding: 1rem 0;
+}
+
+/* --- Footer --- */
+footer {
+  text-align: center;
+  padding: 1.5rem 1rem;
+  font-size: 0.8rem;
+  color: var(--color-text-muted);
+  letter-spacing: 0.02em;
+}
+
+/* --- Responsive --- */
+@media (max-width: 640px) {
+  :root {
+    --card-width: 110px;
+    --card-height: 180px;
+  }
+
+  .card-spread {
+    gap: 0.8rem;
+  }
+
+  .spread-header h2 {
+    font-size: 1.25rem;
+  }
+
+  .card-name {
+    font-size: 0.68rem;
+  }
+
+  .card-keyword {
+    font-size: 0.62rem;
+  }
+
+  .reading-card-detail {
+    padding: 1.1rem;
+  }
+
+  .card-placeholder::after {
+    font-size: 1.8rem;
+  }
+}
+
+@media (max-width: 380px) {
+  :root {
+    --card-width: 95px;
+    --card-height: 155px;
+  }
+
+  .card-spread {
+    gap: 0.5rem;
+  }
+}
