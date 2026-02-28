@@ -177,10 +177,6 @@ body {
   transform: translateY(-4px);
 }
 
-.card.flipped {
-  transform: scale(1.08);
-}
-
 .card-inner {
   position: relative;
   width: 100%;
@@ -347,6 +343,9 @@ body {
   border-radius: 12px;
   padding: 1.5rem;
   animation: fadeUp 0.5s ease both;
+  display: flex;
+  gap: 1.25rem;
+  align-items: flex-start;
 }
 
 .reading-card-detail:nth-child(2) { animation-delay: 0.1s; }
@@ -377,6 +376,27 @@ body {
   font-size: 0.95rem;
   line-height: 1.6;
   color: var(--color-text-muted);
+}
+
+/* --- Detail Card Image (in results) --- */
+.detail-card-image {
+  width: 100px;
+  border-radius: 8px;
+  flex-shrink: 0;
+  object-fit: contain;
+  transition: transform 0.3s ease;
+  cursor: pointer;
+}
+
+.detail-card-image:hover {
+  transform: scale(1.45);
+  z-index: 10;
+  position: relative;
+}
+
+.detail-text {
+  flex: 1;
+  min-width: 0;
 }
 
 /* --- Reading Summary --- */
@@ -436,7 +456,14 @@ footer {
   }
 
   .reading-card-detail {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
     padding: 1.1rem;
+  }
+
+  .detail-card-image {
+    width: 120px;
   }
 
   .card-placeholder::after {
