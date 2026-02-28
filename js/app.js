@@ -39,6 +39,10 @@
     readingSummaryEl.innerHTML = '';
     spreadInstruction.textContent = 'Tap each card to reveal its message';
 
+    // Restore the card spread
+    cardSpreadEl.classList.remove('hidden');
+    cardSpreadEl.previousElementSibling.classList.remove('hidden');
+
     // Reset card flip state
     const cards = cardSpreadEl.querySelectorAll('.card');
     cards.forEach(card => card.classList.remove('flipped'));
@@ -139,6 +143,10 @@
       <h3>Your Reading</h3>
       <p>${summary}</p>
     `;
+
+    // Hide the card spread since results now show the card images
+    cardSpreadEl.classList.add('hidden');
+    cardSpreadEl.previousElementSibling.classList.add('hidden');
 
     interpretationEl.classList.remove('hidden');
     btnNew.classList.remove('hidden');
