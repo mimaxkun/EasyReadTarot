@@ -131,7 +131,6 @@
           <div class="detail-position">${drawn.position.name} &mdash; ${drawn.position.description}</div>
           <div class="detail-header">
             <span class="detail-name">${drawn.card.name}</span>
-            <span class="detail-keyword">${result.meta.keyword}</span>
           </div>
           <p class="detail-meaning">${result.intro} ${result.body}.</p>
           <p class="detail-alternative">${result.alternative}</p>
