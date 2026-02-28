@@ -373,10 +373,34 @@ body {
   color: var(--color-text);
 }
 
+.detail-keyword {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--color-accent-light);
+  opacity: 0.8;
+}
+
 .detail-meaning {
   font-size: 0.95rem;
   line-height: 1.6;
   color: var(--color-text-muted);
+  margin-bottom: 0.5rem;
+}
+
+.detail-alternative {
+  font-size: 0.88rem;
+  line-height: 1.5;
+  color: var(--color-text-muted);
+  opacity: 0.75;
+  font-style: italic;
+  margin-bottom: 0.4rem;
+}
+
+.detail-actionable {
+  font-size: 0.88rem;
+  line-height: 1.5;
+  color: var(--color-accent-light);
 }
 
 /* --- Detail Card Image (in results) --- */

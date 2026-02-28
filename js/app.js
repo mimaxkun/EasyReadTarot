@@ -122,7 +122,7 @@
     readingCardsEl.innerHTML = '';
 
     currentSpread.forEach(drawn => {
-      const { intro, body } = interpretCard(drawn);
+      const result = interpretCard(drawn);
       const detail = document.createElement('div');
       detail.className = 'reading-card-detail';
       detail.innerHTML = `
@@ -131,8 +131,11 @@
           <div class="detail-position">${drawn.position.name} &mdash; ${drawn.position.description}</div>
           <div class="detail-header">
             <span class="detail-name">${drawn.card.name}</span>
+            <span class="detail-keyword">${result.meta.keyword}</span>
           </div>
-          <p class="detail-meaning">${intro} ${body}.</p>
+          <p class="detail-meaning">${result.intro} ${result.body}.</p>
+          <p class="detail-alternative">${result.alternative}</p>
+          <p class="detail-actionable">${result.actionable}</p>
         </div>
       `;
       readingCardsEl.appendChild(detail);
