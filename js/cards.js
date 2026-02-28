@@ -41,10 +41,10 @@ const MAJOR_ARCANA = [
   { number: 5,  name: 'The Hierophant',      keyword: 'Guidance' },
   { number: 6,  name: 'The Lovers',          keyword: 'Attraction' },
   { number: 7,  name: 'The Chariot',         keyword: 'Victory' },
-  { number: 8,  name: 'Strength',            keyword: 'Endurance' },
+  { number: 8,  name: 'Justice',              keyword: 'Consequences' },
   { number: 9,  name: 'The Hermit',          keyword: 'Self-Reflection' },
   { number: 10, name: 'Wheel of Fortune',    keyword: 'Destiny' },
-  { number: 11, name: 'Justice',             keyword: 'Consequences' },
+  { number: 11, name: 'Strength',            keyword: 'Endurance' },
   { number: 12, name: 'The Hanged Man',      keyword: 'Paradox' },
   { number: 13, name: 'Death',               keyword: 'Transformation' },
   { number: 14, name: 'Temperance',          keyword: 'Inspiration' },
@@ -56,6 +56,24 @@ const MAJOR_ARCANA = [
   { number: 20, name: 'Judgment',            keyword: 'Awakening' },
   { number: 21, name: 'The World',           keyword: 'Fulfillment' }
 ];
+
+/**
+ * Image filename mapping for Major Arcana.
+ * Matches the uploaded Marseille deck filenames exactly.
+ */
+const MAJOR_IMAGE_MAP = {
+  0: 'FOOL0', 1: 'MAGICIAN1', 2: 'HIGHPRIESTESS2', 3: 'EMPRESS3',
+  4: 'EMPEROR4', 5: 'HIEROPHANT5', 6: 'LOVER6', 7: 'CHARIOT7',
+  8: 'JUSTICE8', 9: 'HERMIT9', 10: 'WHEEL10', 11: 'STRENGTH11',
+  12: 'HANGEDMAN12', 13: 'DEATH13', 14: 'TEMPERANCE14', 15: 'DEVIL15',
+  16: 'TOWER16', 17: 'STAR17', 18: 'MOON18', 19: 'SUN19',
+  20: 'JUDGEMENT20', 21: 'WORLD21'
+};
+
+/** Map internal suit key to the image filename suit suffix. */
+const SUIT_IMAGE_MAP = {
+  swords: 'SWORDS', cups: 'CUPS', wands: 'WANDS', pentacles: 'COINS'
+};
 
 /**
  * Build the full 78-card deck.
@@ -73,14 +91,16 @@ function buildDeck() {
       type: 'major',
       keyword: major.keyword,
       meaning: major.keyword,
-      image: `images/cards/${num}-${major.name.toLowerCase().replace(/^the\s+/, '').replace(/\s+/g, '-')}.jpg`
+      image: `images/cards/${MAJOR_IMAGE_MAP[major.number]}.jpg`
     });
   }
 
   // Minor Arcana — pip cards (40 cards)
   for (const [suitKey, suit] of Object.entries(SUITS)) {
+    const suitImg = SUIT_IMAGE_MAP[suitKey];
     for (const [rankKey, rank] of Object.entries(RANKS)) {
       const rankLabel = rankKey === 'ace' ? 'Ace' : rankKey;
+      const rankImg = rankKey === 'ace' ? 'ACE' : rankKey;
       deck.push({
         id: `${suitKey}-${rankKey}`,
         name: `${rankLabel} of ${suit.name}`,
@@ -90,7 +110,7 @@ function buildDeck() {
         suit: suitKey,
         suitData: suit,
         rank: rankKey,
-        image: `images/cards/${rankKey}-of-${suitKey}.jpg`
+        image: `images/cards/${rankImg}${suitImg}.jpg`
       });
     }
 
@@ -105,7 +125,7 @@ function buildDeck() {
         suit: suitKey,
         suitData: suit,
         rank: courtKey,
-        image: `images/cards/${courtKey}-of-${suitKey}.jpg`
+        image: `images/cards/${courtKey.toUpperCase()}${suitImg}.jpg`
       });
     }
   }
