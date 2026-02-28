@@ -1,5 +1,5 @@
 /* ==========================================================================
-   EasyRead Tarot — Modern & Clean Stylesheet
+   EasyRead Tarot — Modern Minimal Stylesheet
    ========================================================================== */
 
 /* --- Reset & Base --- */
@@ -10,41 +10,53 @@
 }
 
 :root {
-  --color-bg: #fafaf8;
+  --color-bg: #f8f7f4;
   --color-surface: #ffffff;
-  --color-text: #1a1a1a;
-  --color-text-muted: #6b6b6b;
-  --color-accent: #4a3f6b;
-  --color-accent-light: #7b6fa0;
-  --color-accent-subtle: #eee8f5;
-  --color-gold: #c9a84c;
-  --color-gold-soft: #f5ecd4;
-  --color-border: #e5e5e0;
-  --color-card-back: #2c2445;
-  --color-card-back-accent: #c9a84c;
+  --color-text: #1c1c1e;
+  --color-text-secondary: #48484a;
+  --color-text-muted: #8e8e93;
+  --color-accent: #3a3154;
+  --color-accent-light: #6e6490;
+  --color-accent-subtle: #f0edf5;
+  --color-gold: #b8993e;
+  --color-gold-soft: #f5f0e0;
+  --color-border: #e8e8e5;
+  --color-border-light: #f0f0ed;
+  --color-card-back: #2a2240;
+  --color-card-back-accent: #b8993e;
+  --color-shadow: rgba(28, 28, 30, 0.06);
+  --color-shadow-md: rgba(28, 28, 30, 0.1);
 
-  --font-heading: 'Georgia', 'Times New Roman', serif;
-  --font-body: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-heading: 'Cormorant Garamond', Georgia, 'Times New Roman', serif;
+  --font-body: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
 
   --card-width: 160px;
   --card-height: 280px;
-  --card-radius: 10px;
+  --card-radius: 12px;
 
-  --transition-smooth: 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  --radius-sm: 8px;
+  --radius-md: 14px;
+  --radius-lg: 20px;
+
+  --transition-smooth: 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  --transition-spring: 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
 html {
   font-size: 16px;
   -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 body {
   font-family: var(--font-body);
+  font-weight: 400;
   color: var(--color-text);
   background: var(--color-bg);
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+  line-height: 1.6;
 }
 
 .hidden {
@@ -60,92 +72,171 @@ body {
   text-align: center;
   padding: 2rem;
   min-height: 100vh;
+  position: relative;
+  overflow: hidden;
+}
+
+#hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse at 50% 30%, rgba(110, 100, 144, 0.05) 0%, transparent 60%),
+    radial-gradient(ellipse at 80% 70%, rgba(184, 153, 62, 0.04) 0%, transparent 50%);
+  pointer-events: none;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 1;
+  animation: heroEntrance 1s ease both;
+}
+
+@keyframes heroEntrance {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.hero-decorative {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.hero-line {
+  width: 48px;
+  height: 1px;
+  background: var(--color-gold);
+  opacity: 0.5;
+}
+
+.hero-symbol {
+  font-size: 0.7rem;
+  color: var(--color-gold);
+  opacity: 0.6;
+  transform: rotate(45deg);
 }
 
 .hero-content h1 {
   font-family: var(--font-heading);
-  font-size: clamp(2.2rem, 5vw, 3.5rem);
-  font-weight: 400;
-  letter-spacing: 0.04em;
+  font-size: clamp(2.8rem, 6vw, 4.2rem);
+  font-weight: 300;
+  letter-spacing: 0.03em;
   color: var(--color-accent);
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.6rem;
+  line-height: 1.15;
 }
 
 .hero-content .subtitle {
-  font-size: 1.05rem;
+  font-size: 1rem;
+  font-weight: 300;
   color: var(--color-text-muted);
-  margin-bottom: 2.5rem;
-  letter-spacing: 0.02em;
+  margin-bottom: 3rem;
+  letter-spacing: 0.04em;
+}
+
+.hero-footnote {
+  margin-top: 3.5rem;
+  font-size: 0.72rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+  opacity: 0.6;
 }
 
 /* --- Buttons --- */
 .btn-primary,
 .btn-secondary {
   font-family: var(--font-body);
-  font-size: 1rem;
-  padding: 0.85rem 2.4rem;
+  font-size: 0.88rem;
+  font-weight: 400;
+  padding: 0.9rem 2.8rem;
   border: none;
   border-radius: 50px;
   cursor: pointer;
   transition: all var(--transition-smooth);
-  letter-spacing: 0.03em;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
 }
 
 .btn-primary {
   background: var(--color-accent);
   color: #fff;
+  box-shadow: 0 2px 12px rgba(58, 49, 84, 0.2);
 }
 
 .btn-primary:hover {
   background: var(--color-accent-light);
-  transform: translateY(-1px);
-  box-shadow: 0 4px 20px rgba(74, 63, 107, 0.25);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 24px rgba(58, 49, 84, 0.25);
+}
+
+.btn-primary:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 8px rgba(58, 49, 84, 0.2);
 }
 
 .btn-secondary {
   background: transparent;
   color: var(--color-accent);
-  border: 1.5px solid var(--color-accent);
+  border: 1.5px solid var(--color-border);
 }
 
 .btn-secondary:hover {
+  border-color: var(--color-accent);
   background: var(--color-accent-subtle);
+}
+
+.btn-secondary:active {
+  transform: translateY(0);
 }
 
 /* --- Reading Area --- */
 #reading {
   flex: 1;
   padding: 2rem 1.5rem 3rem;
-  max-width: 900px;
+  max-width: 860px;
   margin: 0 auto;
   width: 100%;
+  animation: fadeUp 0.6s ease both;
 }
 
 .spread-header {
   text-align: center;
-  margin-bottom: 2.5rem;
-  padding-top: 1.5rem;
+  margin-bottom: 3rem;
+  padding-top: 2rem;
 }
 
 .spread-header h2 {
   font-family: var(--font-heading);
-  font-size: 1.6rem;
-  font-weight: 400;
+  font-size: 1.8rem;
+  font-weight: 300;
   color: var(--color-accent);
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.6rem;
+  letter-spacing: 0.02em;
 }
 
 .spread-instruction {
-  font-size: 0.9rem;
+  font-size: 0.85rem;
+  font-weight: 300;
   color: var(--color-text-muted);
   transition: opacity 0.3s ease;
+  letter-spacing: 0.02em;
 }
 
 /* --- Card Spread Layout --- */
 .card-spread {
   display: flex;
   justify-content: center;
-  gap: 2rem;
+  gap: 2.5rem;
   margin-bottom: 3rem;
 }
 
@@ -153,13 +244,28 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 0.75rem;
+  gap: 0.9rem;
+}
+
+.card-slot:nth-child(1) { animation: cardDealIn 0.5s ease both 0.1s; }
+.card-slot:nth-child(2) { animation: cardDealIn 0.5s ease both 0.25s; }
+.card-slot:nth-child(3) { animation: cardDealIn 0.5s ease both 0.4s; }
+
+@keyframes cardDealIn {
+  from {
+    opacity: 0;
+    transform: translateY(30px) scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
 }
 
 .position-label {
-  font-size: 0.8rem;
+  font-size: 0.7rem;
   text-transform: uppercase;
-  letter-spacing: 0.12em;
+  letter-spacing: 0.16em;
   color: var(--color-text-muted);
   font-weight: 500;
 }
@@ -168,13 +274,13 @@ body {
 .card {
   width: var(--card-width);
   height: var(--card-height);
-  perspective: 800px;
+  perspective: 900px;
   cursor: pointer;
-  transition: transform 0.5s ease;
+  transition: transform var(--transition-smooth);
 }
 
 .card:hover:not(.flipped) {
-  transform: translateY(-4px);
+  transform: translateY(-6px);
 }
 
 .card-inner {
@@ -201,6 +307,9 @@ body {
 /* Card Back Design */
 .card-back {
   background: var(--color-card-back);
+  box-shadow:
+    0 4px 16px rgba(42, 34, 64, 0.25),
+    0 1px 3px rgba(42, 34, 64, 0.1);
 }
 
 .card-back-design {
@@ -209,39 +318,60 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 8px;
+  padding: 10px;
 }
 
 .card-back-border {
   width: 100%;
   height: 100%;
-  border: 1.5px solid var(--color-card-back-accent);
-  border-radius: 6px;
+  border: 1px solid rgba(184, 153, 62, 0.35);
+  border-radius: 7px;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 10px;
+  padding: 12px;
 }
 
 .card-back-pattern {
   width: 100%;
   height: 100%;
-  border-radius: 4px;
+  border-radius: 5px;
+  position: relative;
+  background:
+    radial-gradient(circle at 50% 50%, rgba(184, 153, 62, 0.12) 0%, transparent 70%);
+}
+
+.card-back-pattern::before {
+  content: '';
+  position: absolute;
+  inset: 0;
   background:
     repeating-linear-gradient(
       45deg,
       transparent,
-      transparent 8px,
-      rgba(201, 168, 76, 0.08) 8px,
-      rgba(201, 168, 76, 0.08) 9px
+      transparent 6px,
+      rgba(184, 153, 62, 0.06) 6px,
+      rgba(184, 153, 62, 0.06) 7px
     ),
     repeating-linear-gradient(
       -45deg,
       transparent,
-      transparent 8px,
-      rgba(201, 168, 76, 0.08) 8px,
-      rgba(201, 168, 76, 0.08) 9px
+      transparent 6px,
+      rgba(184, 153, 62, 0.06) 6px,
+      rgba(184, 153, 62, 0.06) 7px
     );
+  border-radius: 5px;
+}
+
+.card-back-pattern::after {
+  content: '\2666';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) rotate(45deg);
+  font-size: 1.4rem;
+  color: var(--color-card-back-accent);
+  opacity: 0.3;
 }
 
 /* Card Front */
@@ -251,6 +381,7 @@ body {
   border: 1px solid var(--color-border);
   display: flex;
   flex-direction: column;
+  box-shadow: 0 2px 8px var(--color-shadow);
 }
 
 .card-image-wrap {
@@ -259,7 +390,7 @@ body {
   align-items: center;
   justify-content: center;
   overflow: hidden;
-  padding: 6px 6px 0;
+  padding: 8px 8px 0;
   position: relative;
 }
 
@@ -284,7 +415,7 @@ body {
   width: 100%;
   height: 100%;
   border-radius: 6px;
-  background: linear-gradient(135deg, var(--color-accent-subtle) 0%, var(--color-gold-soft) 100%);
+  background: linear-gradient(145deg, var(--color-accent-subtle) 0%, var(--color-gold-soft) 100%);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -295,22 +426,22 @@ body {
   content: attr(data-numeral);
   font-family: var(--font-heading);
   font-size: 2.4rem;
+  font-weight: 300;
   color: var(--color-accent-light);
-  opacity: 0.5;
+  opacity: 0.4;
 }
 
 .card-info {
-  padding: 0.5rem 0.6rem 0.6rem;
+  padding: 0.5rem 0.6rem 0.65rem;
   text-align: center;
 }
 
 .card-name {
   font-family: var(--font-heading);
-  font-size: 0.78rem;
+  font-size: 0.82rem;
   font-weight: 400;
   color: var(--color-text);
   line-height: 1.2;
-  margin-bottom: 0.15rem;
 }
 
 /* --- Interpretation Panel --- */
@@ -322,7 +453,7 @@ body {
 @keyframes fadeUp {
   from {
     opacity: 0;
-    transform: translateY(16px);
+    transform: translateY(20px);
   }
   to {
     opacity: 1;
@@ -333,92 +464,101 @@ body {
 .reading-cards {
   display: flex;
   flex-direction: column;
-  gap: 1.5rem;
+  gap: 1.25rem;
   margin-bottom: 2rem;
 }
 
 .reading-card-detail {
   background: var(--color-surface);
-  border: 1px solid var(--color-border);
-  border-radius: 12px;
-  padding: 1.5rem;
+  border: 1px solid var(--color-border-light);
+  border-radius: var(--radius-md);
+  padding: 1.75rem;
   animation: fadeUp 0.5s ease both;
   display: flex;
-  gap: 1.25rem;
+  gap: 1.5rem;
   align-items: flex-start;
   overflow: visible;
+  box-shadow: 0 1px 4px var(--color-shadow);
+  transition: box-shadow var(--transition-smooth);
 }
 
-.reading-card-detail:nth-child(2) { animation-delay: 0.1s; }
-.reading-card-detail:nth-child(3) { animation-delay: 0.2s; }
+.reading-card-detail:hover {
+  box-shadow: 0 4px 16px var(--color-shadow-md);
+}
+
+.reading-card-detail:nth-child(2) { animation-delay: 0.12s; }
+.reading-card-detail:nth-child(3) { animation-delay: 0.24s; }
 
 .detail-position {
-  font-size: 0.72rem;
+  font-size: 0.68rem;
   text-transform: uppercase;
-  letter-spacing: 0.12em;
+  letter-spacing: 0.14em;
   color: var(--color-accent-light);
-  margin-bottom: 0.35rem;
+  margin-bottom: 0.4rem;
+  font-weight: 500;
 }
 
 .detail-header {
   display: flex;
   align-items: baseline;
   gap: 0.6rem;
-  margin-bottom: 0.6rem;
+  margin-bottom: 0.75rem;
 }
 
 .detail-name {
   font-family: var(--font-heading);
-  font-size: 1.15rem;
+  font-size: 1.3rem;
+  font-weight: 400;
   color: var(--color-text);
 }
 
 .detail-keyword {
-  font-size: 0.75rem;
+  font-size: 0.72rem;
   text-transform: uppercase;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.1em;
   color: var(--color-accent-light);
-  opacity: 0.8;
+  opacity: 0.7;
 }
 
 .detail-meaning {
-  font-size: 0.95rem;
-  line-height: 1.6;
-  color: var(--color-text-muted);
-  margin-bottom: 0.5rem;
+  font-size: 0.92rem;
+  line-height: 1.7;
+  color: var(--color-text-secondary);
+  margin-bottom: 0.6rem;
 }
 
 .detail-alternative {
-  font-size: 0.88rem;
-  line-height: 1.5;
+  font-size: 0.85rem;
+  line-height: 1.6;
   color: var(--color-text-muted);
-  opacity: 0.75;
   font-style: italic;
-  margin-bottom: 0.4rem;
+  margin-bottom: 0.5rem;
 }
 
 .detail-actionable {
-  font-size: 0.88rem;
-  line-height: 1.5;
+  font-size: 0.85rem;
+  line-height: 1.6;
   color: var(--color-accent-light);
+  font-weight: 400;
 }
 
 /* --- Detail Card Image (in results) --- */
 .detail-card-image {
   width: 100px;
-  border-radius: 8px;
+  border-radius: var(--radius-sm);
   flex-shrink: 0;
   object-fit: contain;
-  transition: transform 0.3s ease;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
   cursor: pointer;
+  box-shadow: 0 2px 8px var(--color-shadow);
 }
 
 .detail-card-image:hover {
-  transform: scale(1.45);
+  transform: scale(1.4);
   z-index: 100;
   position: relative;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
-  border-radius: 8px;
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.25);
+  border-radius: var(--radius-sm);
 }
 
 .detail-text {
@@ -428,39 +568,54 @@ body {
 
 /* --- Reading Summary --- */
 .reading-summary {
-  background: var(--color-accent-subtle);
-  border-radius: 12px;
-  padding: 1.5rem;
+  background: linear-gradient(135deg, var(--color-accent-subtle) 0%, rgba(245, 240, 224, 0.4) 100%);
+  border: 1px solid var(--color-border-light);
+  border-radius: var(--radius-md);
+  padding: 1.75rem;
   margin-bottom: 1.5rem;
 }
 
 .reading-summary h3 {
   font-family: var(--font-heading);
-  font-size: 1.1rem;
-  font-weight: 400;
+  font-size: 1.25rem;
+  font-weight: 300;
   color: var(--color-accent);
-  margin-bottom: 0.6rem;
+  margin-bottom: 0.75rem;
+  letter-spacing: 0.01em;
 }
 
 .reading-summary p {
-  font-size: 0.95rem;
-  line-height: 1.65;
-  color: var(--color-text-muted);
+  font-size: 0.92rem;
+  line-height: 1.75;
+  color: var(--color-text-secondary);
 }
 
 /* --- Actions --- */
 .actions {
   text-align: center;
-  padding: 1rem 0;
+  padding: 1.25rem 0;
 }
 
 /* --- Footer --- */
 footer {
   text-align: center;
-  padding: 1.5rem 1rem;
-  font-size: 0.8rem;
+  padding: 2rem 1rem;
+  font-size: 0.78rem;
   color: var(--color-text-muted);
-  letter-spacing: 0.02em;
+  letter-spacing: 0.03em;
+  font-weight: 300;
+}
+
+.footer-decorative {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 1rem;
+}
+
+.footer-line {
+  width: 40px;
+  height: 1px;
+  background: var(--color-border);
 }
 
 /* --- Responsive --- */
@@ -471,31 +626,47 @@ footer {
   }
 
   .card-spread {
-    gap: 0.8rem;
+    gap: 1rem;
   }
 
   .spread-header h2 {
-    font-size: 1.25rem;
+    font-size: 1.4rem;
   }
 
   .card-name {
-    font-size: 0.68rem;
+    font-size: 0.7rem;
   }
 
   .reading-card-detail {
     flex-direction: column;
     align-items: center;
     text-align: center;
-    padding: 1.1rem;
+    padding: 1.25rem;
     overflow: visible;
   }
 
+  .detail-header {
+    justify-content: center;
+  }
+
   .detail-card-image {
-    width: 120px;
+    width: 110px;
   }
 
   .card-placeholder::after {
     font-size: 1.8rem;
+  }
+
+  .hero-content h1 {
+    font-size: clamp(2.2rem, 8vw, 3.2rem);
+  }
+
+  .hero-decorative {
+    margin-bottom: 1.5rem;
+  }
+
+  .hero-line {
+    width: 32px;
   }
 }
 
