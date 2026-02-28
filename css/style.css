@@ -170,10 +170,14 @@ body {
   height: var(--card-height);
   perspective: 800px;
   cursor: pointer;
-  transition: transform 0.2s ease;
+  transition: transform 0.5s ease;
 }
 
 .card:hover:not(.flipped) {
+  transform: translateY(-4px);
+}
+
+.card.flipped {
   transform: scale(1.08);
 }
 
