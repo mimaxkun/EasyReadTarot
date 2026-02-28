@@ -174,7 +174,7 @@ body {
 }
 
 .card:hover:not(.flipped) {
-  transform: translateY(-4px);
+  transform: scale(1.08);
 }
 
 .card-inner {
