@@ -5,6 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>EasyRead Tarot — Marseille Tarot Reading</title>
   <meta name="description" content="A clean, modern three-card tarot reading experience based on the Marseille tradition.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
@@ -12,9 +15,15 @@
   <!-- Landing / Hero -->
   <header id="hero">
     <div class="hero-content">
+      <div class="hero-decorative" aria-hidden="true">
+        <div class="hero-line"></div>
+        <div class="hero-symbol">&#9830;</div>
+        <div class="hero-line"></div>
+      </div>
       <h1>EasyRead Tarot</h1>
       <p class="subtitle">A three-card reading in the Marseille tradition</p>
       <button id="btn-start" class="btn-primary">Draw Your Cards</button>
+      <p class="hero-footnote">78 cards &middot; Marseille tradition &middot; Free will</p>
     </div>
   </header>
 
@@ -111,6 +120,9 @@
   </main>
 
   <footer>
+    <div class="footer-decorative" aria-hidden="true">
+      <div class="footer-line"></div>
+    </div>
     <p>Cards suggest, not predict &mdash; you have free will.</p>
   </footer>
 

@@ -43,9 +43,16 @@
     cardSpreadEl.classList.remove('hidden');
     cardSpreadEl.previousElementSibling.classList.remove('hidden');
 
-    // Reset card flip state
+    // Reset card flip state and re-trigger deal animation
     const cards = cardSpreadEl.querySelectorAll('.card');
     cards.forEach(card => card.classList.remove('flipped'));
+
+    const slots = cardSpreadEl.querySelectorAll('.card-slot');
+    slots.forEach(slot => {
+      slot.style.animation = 'none';
+      slot.offsetHeight; // force reflow
+      slot.style.animation = '';
+    });
 
     // Short delay then deal new cards
     setTimeout(dealCards, 300);
