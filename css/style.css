@@ -313,13 +313,6 @@ body {
   margin-bottom: 0.15rem;
 }
 
-.card-keyword {
-  font-size: 0.7rem;
-  color: var(--color-accent-light);
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-}
-
 /* --- Interpretation Panel --- */
 .interpretation {
   margin-top: 1rem;
@@ -374,12 +367,6 @@ body {
   font-family: var(--font-heading);
   font-size: 1.15rem;
   color: var(--color-text);
-}
-
-.detail-keyword {
-  font-size: 0.85rem;
-  color: var(--color-gold);
-  font-weight: 500;
 }
 
 .detail-meaning {
@@ -442,10 +429,6 @@ footer {
 
   .card-name {
     font-size: 0.68rem;
-  }
-
-  .card-keyword {
-    font-size: 0.62rem;
   }
 
   .reading-card-detail {

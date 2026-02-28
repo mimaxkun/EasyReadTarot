@@ -91,7 +91,6 @@
 
     // Card info
     front.querySelector('.card-name').textContent = card.name;
-    front.querySelector('.card-keyword').textContent = card.keyword;
 
     // Click to flip
     cardEl.onclick = function () {
@@ -126,7 +125,6 @@
         <div class="detail-position">${drawn.position.name} &mdash; ${drawn.position.description}</div>
         <div class="detail-header">
           <span class="detail-name">${drawn.card.name}</span>
-          <span class="detail-keyword">${drawn.card.keyword}</span>
         </div>
         <p class="detail-meaning">${intro} ${body}.</p>
       `;

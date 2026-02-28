@@ -170,14 +170,14 @@ function interpretCard(drawn) {
 function generateSummary(spread) {
   const [past, present, future] = spread;
 
-  const pastKeyword = past.card.keyword;
-  const presentKeyword = present.card.keyword;
-  const futureKeyword = future.card.keyword;
+  const pastName = past.card.name;
+  const presentName = present.card.name;
+  const futureName = future.card.name;
 
   const summaries = [
-    `Your reading traces a path from <strong>${pastKeyword}</strong> through <strong>${presentKeyword}</strong> toward <strong>${futureKeyword}</strong>. The past has shaped your foundation, the present holds the energy you are working with, and the future shows the direction this energy is moving.`,
-    `From <strong>${pastKeyword}</strong> to <strong>${presentKeyword}</strong> to <strong>${futureKeyword}</strong> — your cards paint a clear arc. Let what came before inform, not define, where you are headed.`,
-    `The thread connecting your cards runs from <strong>${pastKeyword}</strong>, through the current energy of <strong>${presentKeyword}</strong>, opening into <strong>${futureKeyword}</strong>. Trust the progression and move with it.`
+    `Your reading traces a path from <strong>${pastName}</strong> through <strong>${presentName}</strong> toward <strong>${futureName}</strong>. The past has shaped your foundation, the present holds the energy you are working with, and the future shows the direction this energy is moving.`,
+    `From <strong>${pastName}</strong> to <strong>${presentName}</strong> to <strong>${futureName}</strong> — your cards paint a clear arc. Let what came before inform, not define, where you are headed.`,
+    `The thread connecting your cards runs from <strong>${pastName}</strong>, through the current energy of <strong>${presentName}</strong>, opening into <strong>${futureName}</strong>. Trust the progression and move with it.`
   ];
 
   return pick(summaries);
